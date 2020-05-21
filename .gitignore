@@ -1,0 +1,5 @@
+*.pyc
+credentials.json
+db.sqlite3
+package-lock.json
+token.pickle

@@ -67,7 +67,20 @@ def addEvent(summary, location, description, startTime, endTime):
         start = event['start'].get('dateTime', event['start'].get('date'))
         print(start, event.get('summary',''))
 '''
+def updateEvent(eventId, summary, location, description, startTime, endTime):
 
+    service = build('calendar', 'v3', credentials=getCreds())
+
+    event = service.events().get(calendarId='primary', eventId=eventId).execute()
+
+    event['summary'] = summary
+    event['location'] = location
+    event['description'] = description
+    event['start']['dateTime'] = startTime + '-04:00'
+    event['end']['dateTime'] = endTime + '-04:00'
+
+    updated_event = service.events().update(calendarId='primary', eventId=event['id'], body=event).execute()
+    
 def deleteEvent(eventId):
 
     service = build('calendar', 'v3', credentials=getCreds())
