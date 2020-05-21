@@ -22,6 +22,6 @@ Run app:
   
   `python manage.py migrate`
 
-- Run the app:
+- Run the app on `localhost:8000`:
 
   `python manage.py runserver`
